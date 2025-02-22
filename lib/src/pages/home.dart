@@ -34,20 +34,20 @@ class HomePage extends StatelessWidget {
           crossAxisCount: 3,
           children: [
             InkWell(
-              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => WaterTracker()));},
-              child: CategoryShowWidgets(showIcon: Icons.water_drop_outlined, title: "Water Tracker",color: Colors.blueAccent,)),
+              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BMICalculator()));},
+              child: CategoryShowWidgets(showIcon: Icons.speed_outlined, title: "BMI Calculator",color: Colors.indigoAccent,)),
+            InkWell(
+                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => FitnessTracker()));},
+                child: CategoryShowWidgets(showIcon: Icons.directions_bike_outlined, title: "Fitness Tracker", color: Colors.green.shade700,)),
+            InkWell(
+                onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => WaterTracker()));},
+                child: CategoryShowWidgets(showIcon: Icons.water_drop_outlined, title: "Water Tracker",color: Colors.blueAccent,)),
             InkWell(
               onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => ExpenseTracker()));},
               child: CategoryShowWidgets(showIcon: Icons.monetization_on_outlined, title: "Expense Tracker", color: Colors.red.shade600,)),
             InkWell(
-              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => BMICalculator()));},
-              child: CategoryShowWidgets(showIcon: Icons.speed_outlined, title: "BMI Calculator",color: Colors.indigoAccent,)),
-            InkWell(
               onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => FocusTracker()));},
               child: CategoryShowWidgets(showIcon: Icons.watch_later_outlined, title: "Focus Tracker",color: Colors.deepPurple,)),
-            InkWell(
-              onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => FitnessTracker()));},
-              child: CategoryShowWidgets(showIcon: Icons.directions_bike_outlined, title: "Fitness Tracker", color: Colors.green.shade700,)),
           ]
         ),
       )

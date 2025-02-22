@@ -16,6 +16,7 @@ class _BMICalculatorState extends State<BMICalculator> {
   final TextEditingController _inchController = TextEditingController();
   final TextEditingController _wtController = TextEditingController();
 
+
   double ans = 0;
   String res = "";
   Color color = Colors.white;
@@ -60,7 +61,7 @@ class _BMICalculatorState extends State<BMICalculator> {
     }else if(outPut >= 18.5 && outPut < 25){
       color = Colors.green;
     }else if(outPut >= 25 && outPut < 30){
-      color = Colors.yellow;
+      color = Colors.yellow.shade600;
     }else if(outPut >= 30 && outPut < 35){
       color = Colors.orange;
     }else if(outPut >= 35 && outPut < 40){
