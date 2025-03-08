@@ -214,7 +214,7 @@ class _WaterTrackerState extends State<WaterTracker> {
             DetailsCard(screenHeight: screenHeight, screenWidth: screenWidth, recommendedIntake: recommendedIntake, intakeValue: intakeValue,),
             SizedBox(height: screenHeight * 0.01),
             Container(
-              height: screenHeight * 0.235,
+              height: screenHeight * 0.21,
               width: screenWidth,
               decoration: BoxDecoration(
                 color: Colors.white,
