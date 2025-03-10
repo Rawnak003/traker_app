@@ -136,112 +136,117 @@ class _WaterTrackerState extends State<WaterTracker> {
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Card(
-              color: Colors.white,
-              shadowColor: Colors.grey,
-              elevation: 8,
-              surfaceTintColor: Colors.white,
-              child: SizedBox(
-                width: screenWidth,
-                height: screenHeight * .11,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: screenHeight * 0.1,
-                          width: screenWidth * 0.75,
-                          child: TextFormField(
-                            controller: _bmiController,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              labelText: "Enter your BMI",
-                              labelStyle: TextStyle(color: Colors.black),
-                              helperText:
-                                  "Please calculate your BMI first with BMI calculator",
-                              border: OutlineInputBorder(
+            Column(
+              children: [
+                Card(
+                  color: Colors.white,
+                  shadowColor: Colors.grey,
+                  elevation: 8,
+                  surfaceTintColor: Colors.white,
+                  child: SizedBox(
+                    width: screenWidth,
+                    height: screenHeight * .11,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: screenHeight * 0.1,
+                              width: screenWidth * 0.75,
+                              child: TextFormField(
+                                controller: _bmiController,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  labelText: "Enter your BMI",
+                                  labelStyle: TextStyle(color: Colors.black),
+                                  helperText:
+                                      "Please calculate your BMI first with BMI calculator",
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    borderSide: BorderSide(
+                                      width: 3,
+                                      color: Colors.deepPurple.shade800,
+                                    ),
+                                  ),
+                                  filled: true,
+                                  fillColor: Colors.blue.shade50,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: screenWidth * .1285,
+                              width: screenWidth * 0.13,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(10.0),
-                                borderSide: BorderSide(
-                                  width: 3,
+                                border: Border.all(
+                                  width: 2,
                                   color: Colors.deepPurple.shade800,
                                 ),
                               ),
-                              filled: true,
-                              fillColor: Colors.blue.shade50,
+                              child: IconButton(
+                                onPressed: () {
+                                  double bmi = double.parse(_bmiController.text);
+                                  getWaterIntake(bmi);
+                                },
+                                icon: Icon(
+                                  Icons.water_drop_sharp,
+                                  color: Colors.blueAccent.shade700,
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                        Container(
-                          height: screenWidth * .1285,
-                          width: screenWidth * 0.13,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10.0),
-                            border: Border.all(
-                              width: 2,
-                              color: Colors.deepPurple.shade800,
-                            ),
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              double bmi = double.parse(_bmiController.text);
-                              getWaterIntake(bmi);
-                            },
-                            icon: Icon(
-                              Icons.water_drop_sharp,
-                              color: Colors.blueAccent.shade700,
-                            ),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-            SizedBox(height: screenHeight * 0.01),
-            ProgressCard(
-              screenWidth: screenWidth,
-              screenHeight: screenHeight,
-              recommendedValue: recommendedIntake,
-              intakeValue: intakeValue,
-            ),
-            SizedBox(height: screenHeight * 0.01),
-            DetailsCard(screenHeight: screenHeight, screenWidth: screenWidth, recommendedIntake: recommendedIntake, intakeValue: intakeValue,),
-            SizedBox(height: screenHeight * 0.01),
-            Container(
-              height: screenHeight * 0.21,
-              width: screenWidth,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.0),
-                border: Border.all(width: 1, color: Colors.blue.shade200),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListView.builder(
-                  itemCount: waterIntake.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return ListTileCard(waterIntake: waterIntake, index: index, hourNow: hourNow,timeNow: timeNow,);
-                  },
+                SizedBox(height: screenHeight * 0.01),
+                ProgressCard(
+                  screenWidth: screenWidth,
+                  screenHeight: screenHeight,
+                  recommendedValue: recommendedIntake,
+                  intakeValue: intakeValue,
                 ),
-              ),
+                SizedBox(height: screenHeight * 0.01),
+                DetailsCard(screenHeight: screenHeight, screenWidth: screenWidth, recommendedIntake: recommendedIntake, intakeValue: intakeValue,),
+                SizedBox(height: screenHeight * 0.01),
+                Container(
+                  height: screenHeight * 0.21,
+                  width: screenWidth,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10.0),
+                    border: Border.all(width: 1, color: Colors.blue.shade200),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListView.builder(
+                      itemCount: waterIntake.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTileCard(waterIntake: waterIntake, index: index, hourNow: hourNow,timeNow: timeNow,);
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
-            SizedBox(height: screenHeight * 0.01),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(
+                Container(
+                  margin: EdgeInsets.only(bottom: screenHeight * .033),
                   height: screenHeight * .06,
                   width: screenWidth * .75,
                   child: ElevatedButton(onPressed: (){_clr();},style: ElevatedButton.styleFrom(backgroundColor: Colors.blueAccent), child: Text("Reset All",style: TextStyle(color: Colors.white,fontSize: 20),),),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
